@@ -1,8 +1,9 @@
 import React from "react";
+import SignIn from "../organisms/SignIn";
 
 const Login = (): React.ReactNode => {
 
-    return <>Login</>
+    return <SignIn />
 }
 
 export default Login;
