@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import UserPost from '../../molecules/UserPost';
-import { Box } from '@mui/material';
 import { Post } from '../../../services/posts.interface';
 import { getPosts } from '../../../services/posts';
 import { useAuth } from '../../../providers/authProvider';
+import { Grid2 as Grid, Typography } from '@mui/material';
 
 const PostsGrid = (): React.ReactNode => {
 	const { user } = useAuth();
@@ -22,7 +22,7 @@ const PostsGrid = (): React.ReactNode => {
 		};
 
 		fetchPosts();
-	}, []);
+	}, [user?.id]);
 
 	if (error) {
 		return <div>{error}</div>;
@@ -31,12 +31,14 @@ const PostsGrid = (): React.ReactNode => {
 
 	return (
 		<div>
-			<h1>Posts List</h1>
-			<ul>
+			<Typography variant="h4" component="h1">Posts List</Typography>
+			<Grid container spacing={2}>
 				{posts.map((post) => (
-					<UserPost title={post.title} body={post.body} onEdit={() => { }} key={post.id} />
+					<Grid size={4}>
+						<UserPost title={post.title} body={post.body} showEditOption={user?.role == 'admin' ? true : false} postId={post.id} userId={user?.id || 0} key={post.id} />
+					</Grid>
 				))}
-			</ul>
+			</Grid>
 		</div>
 	);
 };
