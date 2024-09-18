@@ -8,7 +8,10 @@ const isOdd = (num: number): boolean => {
 };
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-	const [userData, setUserData] = useState<User | null>(null);
+	const [userData, setUserData] = useState<User | null>(() => {
+		const storedUser = localStorage.getItem('user');
+		return storedUser ? JSON.parse(storedUser) : null;
+	});
 	const [error, setError] = useState<string | null>(null);
 
 	const login = async (email: string) => {
@@ -20,12 +23,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
 		const data: User[] = await response.json();
 		const roletype = isOdd(data[0].id) ? 'admin' : 'user';
-		setUserData({ ...data[0], role: roletype });
+		const user: User = { ...data[0], role: roletype }
+		setUserData(user);
+		localStorage.setItem('user', JSON.stringify(user));
 	};
 
 	const logout = () => {
-		// Implement logout logic here
 		setUserData(null);
+		localStorage.removeItem('user');
 	};
 
 	return (
