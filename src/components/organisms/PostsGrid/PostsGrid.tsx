@@ -34,10 +34,7 @@ const PostsGrid = (): React.ReactNode => {
 			<h1>Posts List</h1>
 			<ul>
 				{posts.map((post) => (
-					<li key={post.id}>
-						<h2>{post.title}</h2>
-						<p>{post.body}</p>
-					</li>
+					<UserPost title={post.title} body={post.body} onEdit={() => { }} key={post.id} />
 				))}
 			</ul>
 		</div>

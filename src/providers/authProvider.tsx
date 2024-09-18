@@ -24,6 +24,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 		const data: User[] = await response.json();
 		const roletype = isOdd(data[0].id) ? 'admin' : 'user';
 		const user: User = { ...data[0], role: roletype }
+
 		setUserData(user);
 		localStorage.setItem('user', JSON.stringify(user));
 	};

@@ -1,12 +1,33 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Card, CardContent, CardActions, Typography, IconButton, CardHeader } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
 
-const UserPost = (): React.ReactNode => {
+
+interface UserPostProps {
+	title: string;
+	body: string;
+	onEdit: () => void;
+}
+
+
+const UserPost = ({ title, body, onEdit }: UserPostProps): React.ReactNode => {
 	return (
-		<Box>
-			<Typography>title</Typography>
-			<Typography>description</Typography>
-		</Box>
+		<Card sx={{ maxWidth: 345, margin: '16px auto' }}>
+			<CardHeader
+				action={
+					<IconButton onClick={onEdit} aria-label="edit">
+						<EditIcon />
+					</IconButton>
+				}
+				title={title}
+			/>
+
+			<CardContent>
+				<Typography variant="body2" color="text.secondary">
+					{body}
+				</Typography>
+			</CardContent>
+		</Card>
 	);
 };
 
