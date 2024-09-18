@@ -3,7 +3,8 @@ import UserPost from '../../molecules/UserPost';
 import { Post } from '../../../services/posts.interface';
 import { getPosts } from '../../../services/posts';
 import { useAuth } from '../../../providers/authProvider';
-import { Grid2 as Grid, Typography } from '@mui/material';
+import { Box, Grid2 as Grid, Typography } from '@mui/material';
+import UserSavePost from '../../molecules/UserSavePost';
 
 const PostsGrid = (): React.ReactNode => {
 	const { user } = useAuth();
@@ -30,16 +31,30 @@ const PostsGrid = (): React.ReactNode => {
 
 
 	return (
-		<div>
+		<Box>
 			<Typography variant="h4" component="h1">Posts List</Typography>
-			<Grid container spacing={2}>
-				{posts.map((post) => (
+			{user && (
+				<Grid container spacing={2}>
 					<Grid size={4}>
-						<UserPost title={post.title} body={post.body} showEditOption={user?.role == 'admin' ? true : false} postId={post.id} userId={user?.id || 0} key={post.id} />
+						<UserSavePost
+							userId={user.id}
+						/>
 					</Grid>
-				))}
-			</Grid>
-		</div>
+					{posts.map((post) => (
+						<Grid size={4}>
+							<UserPost
+								title={post.title}
+								body={post.body}
+								showEditOption={user?.role == 'admin' ? true : false}
+								postId={post.id}
+								userId={user.id}
+								key={post.id}
+							/>
+						</Grid>
+					))}
+				</Grid>
+			)}
+		</Box>
 	);
 };
 

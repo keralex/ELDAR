@@ -33,10 +33,8 @@ const UserPost = ({ title, body, showEditOption, postId, userId }: UserPostProps
 		}
 	};
 
-	// const onEdit = () => {}
 	return (
 		<Card sx={{ width: '100%', height: '100%', margin: '16px auto' }}>
-
 			<CardHeader
 				action={
 					showEditOption &&
@@ -77,8 +75,6 @@ const UserPost = ({ title, body, showEditOption, postId, userId }: UserPostProps
 			</CardContent>
 			<CardActions>
 				{isEditing && (
-
-
 					<IconButton onClick={handleSaveClick} aria-label={'save'}>
 						<SaveIcon />
 					</IconButton>
