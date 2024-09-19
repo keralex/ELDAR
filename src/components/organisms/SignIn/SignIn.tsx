@@ -49,8 +49,8 @@ const SignIn = (): React.ReactNode => {
 
 	return (
 		<Box>
-			<Typography>Welcome</Typography>
-			<Typography>Sign in to explore and manage your posts seamlessly. Let's get you connected.</Typography>
+			<Typography variant="h2">Welcome</Typography>
+			<Typography mb='2rem'>Sign in to explore and manage your posts seamlessly. Let's get you connected.</Typography>
 			<form onSubmit={handleSubmit} noValidate>
 				<Typography>Email</Typography>
 				<TextField
