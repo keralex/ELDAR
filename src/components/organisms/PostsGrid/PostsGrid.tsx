@@ -8,7 +8,6 @@ import UserSavePost from '../../molecules/UserSavePost';
 
 const PostsGrid = (): React.ReactNode => {
 	const { user } = useAuth();
-
 	const [posts, setPosts] = useState<Post[]>([]);
 	const [error, setError] = useState<string | null>(null);
 
@@ -35,20 +34,21 @@ const PostsGrid = (): React.ReactNode => {
 			<Typography variant="h4" component="h1">Posts List</Typography>
 			{user && (
 				<Grid container spacing={2}>
-					<Grid size={4}>
-						<UserSavePost
-							userId={user.id}
-						/>
-					</Grid>
-					{posts.map((post) => (
+					{user.role === 'admin' &&
 						<Grid size={4}>
+							<UserSavePost
+								userId={user.id}
+							/>
+						</Grid>
+					}
+					{posts.map((post) => (
+						<Grid size={4} key={post.id}>
 							<UserPost
 								title={post.title}
 								body={post.body}
 								showEditOption={user?.role == 'admin' ? true : false}
 								postId={post.id}
 								userId={user.id}
-								key={post.id}
 							/>
 						</Grid>
 					))}

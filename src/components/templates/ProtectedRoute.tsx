@@ -10,7 +10,7 @@ const ProtectedRoute: React.FC<PrivateRouteProps> = ({ children }) => {
 	const { user } = useAuth();
 	console.log({ user })
 	if (!user) {
-		return <Navigate to='/login' />;
+		return <Navigate to='/' />;
 	}
 	return children;
 };

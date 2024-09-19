@@ -35,5 +35,7 @@ export const getImageStyles = ():SxProps<Theme> => ({
     width: '50%', 
     height: '100%',
     borderRadius: '15px',
-    backgroundImage: `url(${backgroundImage})`
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
 })

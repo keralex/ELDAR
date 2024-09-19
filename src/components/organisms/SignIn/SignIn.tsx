@@ -62,6 +62,7 @@ const SignIn = (): React.ReactNode => {
 					onChange={(e) => setEmail(e.target.value)}
 					error={!!emailError}
 					helperText={emailError || ''}
+					sx={{ mb: '1rem' }}
 					fullWidth
 				/>
 				<Typography>Password</Typography>
@@ -69,15 +70,16 @@ const SignIn = (): React.ReactNode => {
 					id='password'
 					variant='outlined'
 					placeholder='at least 8 characters'
-					fullWidth
 					margin='normal'
 					type='password'
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
 					error={!!passwordError}
 					helperText={passwordError || ''}
+					sx={{ mt: '2px' }}
+					fullWidth
 				/>
-				<Button variant='contained' color='primary' type='submit'>
+				<Button sx={{ my: '2rem' }} variant='contained' color='primary' type='submit'>
 					Sign In
 				</Button>
 			</form>

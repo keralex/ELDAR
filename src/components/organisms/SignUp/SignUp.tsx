@@ -1,6 +1,6 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignUp = (): React.ReactNode => {
 	const navigate = useNavigate();
@@ -51,8 +51,7 @@ const SignUp = (): React.ReactNode => {
 
 	return (
 		<Box>
-			<Typography>Welcome</Typography>
-			<Typography>Join us today! Create an account to start sharing and discovering amazing posts.</Typography>
+			<Typography mb='2rem'>Join us today! Create an account to start sharing and discovering amazing posts.</Typography>
 			<form onSubmit={handleSubmit} noValidate>
 				<Typography>Name</Typography>
 				<TextField
@@ -63,6 +62,7 @@ const SignUp = (): React.ReactNode => {
 					onChange={(e) => setName(e.target.value)}
 					error={!!nameError}
 					helperText={nameError || ''}
+					sx={{ mb: '1rem' }}
 					fullWidth
 				/>
 				<Typography>Email</Typography>
@@ -75,6 +75,7 @@ const SignUp = (): React.ReactNode => {
 					onChange={(e) => setEmail(e.target.value)}
 					error={!!emailError}
 					helperText={emailError || ''}
+					sx={{ mb: '1rem' }}
 					fullWidth
 				/>
 				<Typography>Password</Typography>
@@ -82,18 +83,23 @@ const SignUp = (): React.ReactNode => {
 					id='password'
 					variant='outlined'
 					placeholder='at least 8 characters'
-					fullWidth
 					margin='normal'
 					type='password'
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
 					error={!!passwordError}
 					helperText={passwordError || ''}
+					fullWidth
 				/>
-				<Button variant='contained' color='primary' type='submit'>
+				<Button sx={{ my: '2rem' }} variant='contained' color='primary' type='submit'>
 					Sign Up
 				</Button>
 			</form>
+			<Box>
+				<Typography>
+					Already have an account? <Link to='/'>Sign In</Link>
+				</Typography>
+			</Box>
 		</Box>
 	);
 };
