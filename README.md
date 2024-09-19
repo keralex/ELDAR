@@ -1,50 +1,52 @@
-# React + TypeScript + Vite
+# Challenge Técnico - Eldar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es un challenge técnico para Eldar, donde se simula un sistema de login y un CRUD de posts utilizando una API externa.
 
-Currently, two official plugins are available:
+## Descripción del Proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+El proyecto consiste en:
 
-## Expanding the ESLint configuration
+1. Simular un sistema de login.
+2. Implementar un CRUD (Crear, Leer, Actualizar, Eliminar) para gestionar posts.
+3. Simular llamadas a una API para manejar los datos de los usuarios y posts.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+La API utilizada para simular los datos es [JSONPlaceholder](https://jsonplaceholder.typicode.com/).
 
-- Configure the top-level `parserOptions` property like this:
+## Tecnologías Utilizadas
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Vite**: Para la creación y configuración del proyecto.
+- **React**: Biblioteca para la construcción de la interfaz de usuario.
+- **Material UI**: Framework de componentes de interfaz de usuario para React.
+- **React Router**: Para la gestión de rutas en la aplicación.
+- **TypeScript**: Para asegurar la tipificación estática y mejorar el desarrollo.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Instalación y Ejecución
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Para probar la aplicación, sigue estos pasos:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. Clona el repositorio:
+
+   ```bash
+   git clone <url-del-repositorio>
+
+2. Instala las dependencias:
+   ```bash
+   npm install
+
+3. Inicia la aplicación:
+   ```bash
+    npm run dev
+
+## Simulación de Login
+
+Para poder loguearse en la aplicación, utiliza uno de los usuarios disponibles en la API simulada.
+
+**Ejemplo de usuarios:**
+
+- **Administrador**:
+  Email: Sincere@april.biz , los ID impar tienen permisos para ver, agregar, editar y eliminar posts.
+- **Usuario Normal:**: Email: Shanna@melissa.tv , Los ID par solo pueden ver los posts, no tiene permisos para agregar, editar o eliminar).
+
+## Api utilizada
+
+La aplicación utiliza JSONPlaceholder para simular la base de datos de usuarios y posts.
