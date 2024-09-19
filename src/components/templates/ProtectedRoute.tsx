@@ -8,10 +8,11 @@ interface PrivateRouteProps {
 
 const ProtectedRoute: React.FC<PrivateRouteProps> = ({ children }) => {
 	const { user } = useAuth();
-	console.log({ user })
+
 	if (!user) {
 		return <Navigate to='/' />;
 	}
+
 	return children;
 };
 
